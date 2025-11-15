@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %> - Real-Time Auction System</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <nav class="navbar container">
+            <div class="navbar-brand">
+                <svg class="logo-icon" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                    <rect x="4" y="4" width="24" height="24" rx="4" fill="url(#gradient1)"/>
+                    <path d="M16 10L20 14L16 18L12 14L16 10Z" fill="white"/>
+                    <path d="M16 18L20 22L16 26L12 22L16 18Z" fill="white" opacity="0.7"/>
+                    <defs>
+                        <linearGradient id="gradient1" x1="4" y1="4" x2="28" y2="28">
+                            <stop offset="0%" stop-color="#6366f1"/>
+                            <stop offset="100%" stop-color="#8b5cf6"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <span class="brand-name">AuctionLive</span>
+            </div>
+
+            <ul class="nav-menu">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/auctions" class="nav-link">Live Auctions</a></li>
+                <li><a href="/how-it-works" class="nav-link">How It Works</a></li>
+                <li><a href="/pricing" class="nav-link">Pricing</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <a href="/login" class="btn btn-secondary">Sign In</a>
+                <a href="/signup" class="btn btn-primary">Get Started</a>
+            </div>
+
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <span class="badge-dot"></span>
+                        <span>Live Now: <%= activeAuctionsCount || 247 %> Active Auctions</span>
+                    </div>
+
+                    <h1 class="hero-title">
+                        Bid, Win, Thrive in
+                        <span class="gradient-text">Real-Time</span>
+                    </h1>
+
+                    <p class="hero-description">
+                        Experience the future of online auctions with instant bidding, live updates, and seamless transactions. Join thousands of users winning incredible deals every day.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="/signup" class="btn btn-primary btn-lg">
+                            Start Bidding Now
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                        <a href="#how-it-works" class="btn btn-secondary btn-lg">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polygon points="10 8 16 12 10 16 10 8"/>
+                            </svg> Watch Demo
+                        </a>
+                    </div>
+
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">500K+</span>
+                            <span class="stat-label">Active Users</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">$2.5M</span>
+                            <span class="stat-label">Traded Daily</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">99.9%</span>
+                            <span class="stat-label">Uptime</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="floating-card card-1">
+                    <div class="live-indicator">
+                        <span class="pulse-dot"></span> LIVE
+                    </div>
+                    <div class="card-content">
+                        <p class="card-title">Vintage Watch Collection</p>
+                        <p class="card-bid">Current Bid: <strong>$1,250</strong></p>
+                    </div>
+                </div>
+                <div class="floating-card card-2">
+                    <div class="card-content">
+                        <p class="card-title">Limited Edition Sneakers</p>
+                        <p class="card-bid">Current Bid: <strong>$890</strong></p>
+                    </div>
+                </div>
+                <div class="floating-card card-3">
+                    <div class="live-indicator">
+                        <span class="pulse-dot"></span> LIVE
+                    </div>
+                    <div class="card-content">
+                        <p class="card-title">Rare Art Piece</p>
+                        <p class="card-bid">Current Bid: <strong>$3,500</strong></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Why Choose AuctionLive?</h2>
+                    <p class="section-description">Powerful features that make bidding effortless and winning exciting</p>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">Real-Time Updates</h3>
+                        <p class="feature-description">Get instant notifications for every bid. Stay ahead with live price changes and auction status updates.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                                <path d="M7 11V7a5 5 0 0110 0v4"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">Secure Transactions</h3>
+                        <p class="feature-description">Bank-level encryption and fraud protection. Your bids and payments are always safe and secure.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">Smart Bidding</h3>
+                        <p class="feature-description">Set automatic bids and let our system compete for you. Never miss out on your favorite items.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">Extended Bidding</h3>
+                        <p class="feature-description">Last-second bids extend the auction automatically. Fair competition for everyone involved.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                                <path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">Mobile Ready</h3>
+                        <p class="feature-description">Bid from anywhere on any device. Native apps for iOS and Android coming soon.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">Instant Settlements</h3>
+                        <p class="feature-description">Winners get notified instantly. Fast checkout and immediate item delivery coordination.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section class="how-it-works" id="how-it-works">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">How It Works</h2>
+                    <p class="section-description">Start winning in three simple steps</p>
+                </div>
+
+                <div class="steps-container">
+                    <div class="step-item">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Browse Live Auctions</h3>
+                            <p class="step-description">Explore hundreds of active auctions across various categories. Filter by interest, price range, and ending time.</p>
+                        </div>
+                        <div class="step-visual">
+                            <svg width="200" height="150" viewBox="0 0 200 150" fill="none">
+                                <rect x="20" y="20" width="160" height="110" rx="8" fill="#f3f4f6" stroke="#e5e7eb" stroke-width="2"/>
+                                <rect x="30" y="30" width="50" height="40" rx="4" fill="#6366f1" opacity="0.2"/>
+                                <rect x="90" y="30" width="50" height="40" rx="4" fill="#6366f1" opacity="0.2"/>
+                                <rect x="150" y="30" width="20" height="40" rx="4" fill="#6366f1" opacity="0.2"/>
+                                <rect x="30" y="80" width="140" height="8" rx="4" fill="#e5e7eb"/>
+                                <rect x="30" y="95" width="100" height="8" rx="4" fill="#e5e7eb"/>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Place Your Bid</h3>
+                            <p class="step-description">Enter your bid amount and watch real-time updates. Set automatic bidding or compete manually for the thrill.</p>
+                        </div>
+                        <div class="step-visual">
+                            <svg width="200" height="150" viewBox="0 0 200 150" fill="none">
+                                <rect x="40" y="40" width="120" height="70" rx="8" fill="#f3f4f6" stroke="#e5e7eb" stroke-width="2"/>
+                                <circle cx="100" cy="75" r="20" fill="#6366f1" opacity="0.2"/>
+                                <path d="M100 65 L100 85 M90 75 L110 75" stroke="#6366f1" stroke-width="3" stroke-linecap="round"/>
+                                <rect x="60" y="95" width="80" height="10" rx="5" fill="#10b981"/>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Win & Celebrate</h3>
+                            <p class="step-description">Get instant notifications when you win. Complete secure checkout and receive your item with fast shipping.</p>
+                        </div>
+                        <div class="step-visual">
+                            <svg width="200" height="150" viewBox="0 0 200 150" fill="none">
+                                <path d="M100 30 L120 70 L165 77 L132 108 L141 153 L100 130 L59 153 L68 108 L35 77 L80 70 Z" fill="#fbbf24" opacity="0.3" stroke="#f59e0b" stroke-width="2"/>
+                                <circle cx="100" cy="90" r="35" fill="#10b981" opacity="0.2" stroke="#10b981" stroke-width="2"/>
+                                <path d="M85 90 L95 100 L115 80" stroke="#10b981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Active Auctions Preview -->
+        <section class="active-auctions">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Live Auctions Right Now</h2>
+                    <p class="section-description">Join the action and place your bids</p>
+                </div>
+
+                <div class="auctions-grid">
+                    <% 
+                    const sampleAuctions = [
+                        { id: 1, title: "Vintage Rolex Submariner", currentBid: 8500, endTime: "2h 34m", bids: 47, image: "watch", live: true },
+                        { id: 2, title: "MacBook Pro M3 Max", currentBid: 2100, endTime: "5h 12m", bids: 23, image: "laptop", live: true },
+                        { id: 3, title: "Nike Air Jordan 1 Retro", currentBid: 450, endTime: "1h 08m", bids: 89, image: "sneakers", live: true },
+                        { id: 4, title: "Canon EOS R5 Camera", currentBid: 3200, endTime: "3h 45m", bids: 34, image: "camera", live: false },
+                        { id: 5, title: "Original Banksy Print", currentBid: 12000, endTime: "6h 20m", bids: 15, image: "art", live: true },
+                        { id: 6, title: "PlayStation 5 Bundle", currentBid: 680, endTime: "4h 52m", bids: 102, image: "gaming", live: false }
+                    ];
+                    %>
+
+                        <% sampleAuctions.forEach(auction => { %>
+                            <div class="auction-card">
+                                <% if (auction.live) { %>
+                                    <div class="auction-badge">
+                                        <span class="pulse-dot"></span> LIVE
+                                    </div>
+                                    <% } %>
+
+                                        <div class="auction-image">
+                                            <div class="placeholder-image <%= auction.image %>">
+                                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                                    <circle cx="8.5" cy="8.5" r="1.5"/>
+                                    <polyline points="21 15 16 10 5 21"/>
+                                </svg>
+                                            </div>
+                                        </div>
+
+                                        <div class="auction-content">
+                                            <h3 class="auction-title">
+                                                <%= auction.title %>
+                                            </h3>
+
+                                            <div class="auction-info">
+                                                <div class="info-group">
+                                                    <span class="info-label">Current Bid</span>
+                                                    <span class="info-value price">$<%= auction.currentBid.toLocaleString() %></span>
+                                                </div>
+                                                <div class="info-group">
+                                                    <span class="info-label">Ends In</span>
+                                                    <span class="info-value time"><%= auction.endTime %></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="auction-meta">
+                                                <span class="bid-count">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+                                        <circle cx="9" cy="7" r="4"/>
+                                        <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+                                    </svg>
+                                    <%= auction.bids %> bids
+                                </span>
+                                            </div>
+
+                                            <div class="auction-actions">
+                                                <a href="/auction/<%= auction.id %>" class="btn btn-primary btn-block">Place Bid</a>
+                                                <a href="/auction/<%= auction.id %>" class="btn btn-outline btn-sm">View Details</a>
+                                            </div>
+                                        </div>
+                            </div>
+                            <% }); %>
+                </div>
+
+                <div class="section-cta">
+                    <a href="/auctions" class="btn btn-secondary btn-lg">
+                        View All Auctions
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-card">
+                    <div class="cta-content">
+                        <h2 class="cta-title">Ready to Start Winning?</h2>
+                        <p class="cta-description">Join thousands of satisfied bidders and discover amazing deals every day. Sign up now and get $50 in bidding credits!</p>
+
+                        <div class="cta-actions">
+                            <a href="/signup" class="btn btn-primary btn-lg">
+                                Create Free Account
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                            </a>
+                            <a href="/contact" class="btn btn-white btn-lg">Talk to Sales</a>
+                        </div>
+
+                        <p class="cta-note">No credit card required • Cancel anytime • 24/7 support</p>
+                    </div>
+
+                    <div class="cta-visual">
+                        <div class="stats-float">
+                            <div class="stat-float-item">
+                                <span class="stat-icon">🎯</span>
+                                <span class="stat-text">95% Win Rate</span>
+                            </div>
+                            <div class="stat-float-item">
+                                <span class="stat-icon">⚡</span>
+                                <span class="stat-text">0.3s Response Time</span>
+                            </div>
+                            <div class="stat-float-item">
+                                <span class="stat-icon">🏆</span>
+                                <span class="stat-text">500K+ Happy Users</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">
+                        <svg class="logo-icon" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <rect x="4" y="4" width="24" height="24" rx="4" fill="url(#gradient2)"/>
+                            <path d="M16 10L20 14L16 18L12 14L16 10Z" fill="white"/>
+                            <path d="M16 18L20 22L16 26L12 22L16 18Z" fill="white" opacity="0.7"/>
+                            <defs>
+                                <linearGradient id="gradient2" x1="4" y1="4" x2="28" y2="28">
+                                    <stop offset="0%" stop-color="#6366f1"/>
+                                    <stop offset="100%" stop-color="#8b5cf6"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                        <span class="brand-name">AuctionLive</span>
+                    </div>
+                    <p class="footer-description">Experience the thrill of real-time bidding with instant updates and seamless transactions.</p>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-title">Product</h4>
+                    <ul class="footer-links">
+                        <li><a href="/features">Features</a></li>
+                        <li><a href="/pricing">Pricing</a></li>
+                        <li><a href="/auctions">Live Auctions</a></li>
+                        <li><a href="/faq">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-title">Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="/about">About Us</a></li>
+                        <li><a href="/careers">Careers</a></li>
+                        <li><a href="/blog">Blog</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-title">Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="/privacy">Privacy Policy</a></li>
+                        <li><a href="/terms">Terms of Service</a></li>
+                        <li><a href="/security">Security</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy;
+                    <%= new Date().getFullYear() %> AuctionLive. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Twitter">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="LinkedIn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/>
+                            <circle cx="4" cy="4" r="2"/>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="GitHub">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
