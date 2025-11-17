@@ -1,0 +1,6 @@
+-- AlterTable
+ALTER TABLE `Item` MODIFY `description` VARCHAR(191) NULL;
+
+-- AlterTable
+ALTER TABLE `User` MODIFY `phone` VARCHAR(191) NULL,
+    MODIFY `role` ENUM('ADMIN', 'CUSTOMER', 'MANAGER', 'SELLER') NOT NULL DEFAULT 'CUSTOMER';

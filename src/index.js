@@ -4,12 +4,36 @@ import path from 'path';
 import webRoutes from './routes/web.js';
 import expressLayouts from 'express-ejs-layouts';
 
+import session from 'express-session';
+import flash from 'connect-flash';
+
+
 const __filename = fileURLToPath(
     import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
 const port = process.env.PORT || 3000;
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+
+app.use(session({
+    secret: process.env.SESSION_SECRET || 'somesecret',
+    resave: false,
+    saveUninitialized: false,
+    cookie: { maxAge: 1000 * 60 * 60 } // 1 hour
+}));
+
+app.use(flash());
+
+// Make flash messages available in all EJS templates
+app.use((req, res, next) => {
+    res.locals.success_msg = req.flash('success_msg');
+    res.locals.error_msg = req.flash('error_msg');
+    next();
+});
 
 // Set view engine
 app.set('view engine', 'ejs');

@@ -1,7 +1,10 @@
 import express from 'express';
 import { homePage } from '../controllers/home.controller.js';
-import { adminLoginPage, loginPage, registerPage } from '../controllers/auth.controller.js';
+import { loginPage, registerPage } from '../controllers/auth.controller.js';
+import { adminLogin, adminLoginPage } from '../controllers/admin/auth.controller.js'
 import { dashboardPage } from '../controllers/admin/dashboard.controller.js';
+
+import { isAuthenticated, isAdmin } from '../middlewares/auth.middleware.js';
 
 const router = express.Router();
 
@@ -15,7 +18,11 @@ const router = express.Router();
 router.get('/', homePage)
 router.get('/login', loginPage)
 router.get('/signup', registerPage)
+
+// for admin only
 router.get('/admin/login', adminLoginPage)
-router.get('/admin/dashboard', dashboardPage)
+router.post('/admin/login', adminLogin)
+
+router.get('/admin/dashboard', isAuthenticated, isAdmin, dashboardPage)
 
 export default router;

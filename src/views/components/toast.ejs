@@ -1,0 +1,65 @@
+<style>
+    .toast {
+        min-width: 320px;
+        padding: 16px 20px;
+        background: white;
+        border-radius: 0.5rem;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        border-left: 4px solid;
+        font-size: 0.875rem;
+        color: #1f2937;
+        animation: slideIn 0.3s ease-out;
+        transition: all 0.3s ease-out;
+    }
+    
+    .toast-success {
+        border-left-color: #10b981;
+        background: linear-gradient(to right, #d1fae5, white);
+    }
+    
+    .toast-error {
+        border-left-color: #ef4444;
+        background: linear-gradient(to right, #fee2e2, #fee2e2);
+    }
+    
+    .toast:hover {
+        box-shadow: 0 20px 35px rgba(0, 0, 0, 0.15);
+        transform: scale(1.02);
+    }
+    
+    @keyframes slideIn {
+        from {
+            transform: translateX(400px);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+</style>
+
+<!-- Toast container -->
+<div id="toast-container" data-success="<%= success_msg || '' %>" data-error="<%= error_msg || '' %>" class="fixed top-5 right-5 z-50 flex flex-col gap-3 max-w-sm">
+</div>
+
+
+<!-- for toast flash session message -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const container = document.getElementById('toast-container');
+        const successMsg = container.dataset.success;
+        const errorMsg = container.dataset.error;
+
+        const createToast = (msg, type) => {
+            const toast = document.createElement('div');
+            toast.textContent = msg;
+            toast.className = `toast toast-${type}`; // style via CSS
+            container.appendChild(toast);
+            setTimeout(() => toast.remove(), 4000);
+        }
+
+        if (successMsg) createToast(successMsg, 'success');
+        if (errorMsg) createToast(errorMsg, 'error');
+    });
+</script>
