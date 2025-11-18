@@ -199,3 +199,14 @@ model AutoBid {
 }
 
 
+model EmailOrPhoneVerification {
+  id Int @id @default(autoincrement())
+  emailOrPhone String @unique
+  otp String
+  data Json?
+  expiresAt DateTime
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+

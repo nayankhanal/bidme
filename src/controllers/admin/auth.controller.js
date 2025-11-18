@@ -95,3 +95,8 @@ export const adminLogin = async(req, res) => {
         res.redirect('/admin/login');
     }
 }
+
+export const adminLogout = (req, res) => {
+    req.session.destroy();
+    res.redirect('/admin/login');
+}
