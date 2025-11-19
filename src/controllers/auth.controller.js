@@ -38,8 +38,13 @@ export const register = async(req, res) => {
         })
 
         if (!user) {
-            req.flash('error_msg', 'Failed to register. Please try again.');
-            res.redirect('/signup');
+            // req.flash('error_msg', 'Failed to register. Please try again.');
+            // res.redirect('/signup');
+
+            return res.status(500).json({
+                success: false,
+                message: "Failed to register. Please try again."
+            })
         }
 
         const token = jwt.sign({
@@ -49,8 +54,13 @@ export const register = async(req, res) => {
         }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRES_IN });
 
         if (!token) {
-            req.flash('error_msg', 'Failed to register. Please try again.');
-            res.redirect('/signup');
+            // req.flash('error_msg', 'Failed to register. Please try again.');
+            // res.redirect('/signup');
+
+            return res.status(500).json({
+                success: false,
+                message: "Failed to register. Please try again."
+            })
         }
 
         req.session.user = {
@@ -61,16 +71,38 @@ export const register = async(req, res) => {
             token: token
         }
 
-        req.flash('success_msg', 'Successfully registered. Please login.');
-        res.redirect('/');
+        // req.flash('success_msg', 'Successfully registered. Please login.');
+        // res.redirect('/');
+
+        return res.status(200).json({
+            success: true,
+            message: "Successfully registered. Please login.",
+            user: {
+                id: user.id,
+                name: user.name,
+                email: user.email,
+                token: token
+            }
+        })
 
     } catch (error) {
         if (error.name === "ZodError") {
-            req.flash('error_msg', error.issues[0].message);
-            res.redirect('/signup');
+            // req.flash('error_msg', error.issues[0].message);
+            // res.redirect('/signup');
+
+            return res.status(422).json({
+                success: false,
+                errorOn: error.issues[0].path[0],
+                message: error.issues[0].message
+            })
         }
-        req.flash('error_msg', 'Server error');
-        res.redirect('/signup');
+        // req.flash('error_msg', 'Server error');
+        // res.redirect('/signup');
+
+        return res.status(500).json({
+            success: false,
+            message: "Server error"
+        })
     }
 }
 
@@ -135,6 +167,8 @@ export const logout = (req, res) => {
 export const registerRequest = async(req, res) => {
     try {
         const validated = await registerSchema.parseAsync(req.body);
+        // console.log(validated);
+
 
         let isEmailOrPhone = null
         if (validated.email) {
@@ -187,6 +221,8 @@ export const registerRequest = async(req, res) => {
         // console.log(error);
 
         if (error.name === "ZodError") {
+            console.log('hrerere');
+
             return res.status(422).json({
                 success: false,
                 errorOn: error.issues[0].path[0],
