@@ -193,7 +193,7 @@
                     </div>
 
                     <!-- OTP Input Form -->
-                    <form id="otpForm" onsubmit="verifyOtp(event)">
+                    <form id="otpForm" onsubmit="verifyOtpAndRegister(event)">
                         <div>
                             <label for="otp" class="block text-sm font-medium text-gray-700">
                                 Enter verification code
@@ -290,6 +290,7 @@
 
         <script>
             let userEmail = '';
+            let registrationData = {};
 
             function signupRequest(e) {
                 e.preventDefault();
@@ -302,6 +303,8 @@
                     password: formData.get('password'),
                     confirmPassword: formData.get('confirmPassword'),
                 };
+
+                registrationData = data;
 
                 // Clear previous error messages
                 document.querySelectorAll('.text-red-500').forEach(el => el.innerHTML = '');
@@ -353,22 +356,21 @@
                 document.getElementById('otp').focus();
             }
 
-            function verifyOtp(e) {
+            function verifyOtpAndRegister(e) {
                 e.preventDefault();
                 const otp = document.getElementById('otp').value;
 
                 // Clear previous error
                 document.getElementById('otpError').innerHTML = '';
 
+                registrationData.otp = otp;
+
                 fetch('/signup', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
                         },
-                        body: JSON.stringify({
-                            email: userEmail,
-                            otp: otp
-                        })
+                        body: JSON.stringify(registrationData)
                     })
                     .then(async response => {
 

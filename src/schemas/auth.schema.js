@@ -9,8 +9,8 @@ const passwordRegex =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
 export const registerSchema = z.object({
-        firstName: z.string().min(3, { message: "Name must be at least 3 characters" }).max(50, { message: "Name must be at most 50 characters" }),
-        lastName: z.string().min(3, { message: "Name must be at least 3 characters" }).max(50, { message: "Name must be at most 50 characters" }),
+        firstName: z.string("First name is required").min(3, { message: "Name must be at least 3 characters" }).max(50, { message: "Name must be at most 50 characters" }),
+        lastName: z.string("Last name is required").min(3, { message: "Name must be at least 3 characters" }).max(50, { message: "Name must be at most 50 characters" }),
         email: z
             .string()
             .email()
@@ -36,7 +36,7 @@ export const registerSchema = z.object({
                 return !exists;
             }, "Email already exists"),
         phone: z
-            .string()
+            .string("Phone number is required")
             .regex(phoneRegex, "Phone must start with 97 or 98 and be 10 digits")
             .optional()
             .refine(async(value) => {
@@ -49,8 +49,12 @@ export const registerSchema = z.object({
                 return !exists;
             }, { message: "Phone number already exists" }),
 
-        password: z.string().regex(passwordRegex, "Password must contain uppercase, lowercase, digit, special character and be 8+ chars"),
-        confirmPassword: z.string(),
+        password: z.string("Password is required").regex(passwordRegex, "Password must contain uppercase, lowercase, digit, special character and be 8+ chars"),
+        confirmPassword: z.string("Password confirmation is required"),
+        otp: z
+            .string()
+            .regex(/^\d{6}$/, "OTP must contain 6 digits number")
+            .optional()
     })
     .refine((data) => data.email || data.phone, {
         message: "Email or phone is required",
@@ -60,6 +64,18 @@ export const registerSchema = z.object({
         message: "Passwords do not match",
         path: ["confirmPassword"],
     });
+
+
+// Create a function to get the schema based on the path
+export const getRegisterSchema = (path) => {
+    if (path === '/signup') {
+        return registerSchema.refine((data) => !!data.otp, {
+            message: "OTP is required",
+            path: ["otp"],
+        });
+    }
+    return registerSchema;
+};
 
 
 

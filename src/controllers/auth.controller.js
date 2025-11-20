@@ -1,4 +1,4 @@
-import { registerSchema } from "../schemas/auth.schema.js";
+import { registerSchema, getRegisterSchema } from "../schemas/auth.schema.js";
 
 import { PrismaClient } from '@prisma/client';
 import bcrypt from 'bcryptjs';
@@ -24,7 +24,8 @@ export const registerPage = (req, res) => {
 
 export const register = async(req, res) => {
     try {
-        const validated = await registerSchema.parseAsync(req.body);
+        const schema = getRegisterSchema(req.path);
+        const validated = await schema.parseAsync(req.body);
 
         const fullName = validated.firstName + " " + validated.lastName;
 
@@ -101,7 +102,7 @@ export const register = async(req, res) => {
 
         return res.status(500).json({
             success: false,
-            message: "Server error"
+            message: "Server error",
         })
     }
 }
@@ -166,9 +167,8 @@ export const logout = (req, res) => {
 
 export const registerRequest = async(req, res) => {
     try {
-        const validated = await registerSchema.parseAsync(req.body);
-        // console.log(validated);
-
+        const schema = getRegisterSchema(req.path);
+        const validated = await schema.parseAsync(req.body);
 
         let isEmailOrPhone = null
         if (validated.email) {
