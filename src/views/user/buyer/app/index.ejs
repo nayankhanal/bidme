@@ -1,0 +1,241 @@
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <!-- Hero -->
+    <div class="mb-12">
+        <div class="flex items-center justify-between mb-6">
+            <div>
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-2">Hey Sarah! <span class="fire-emoji">🔥</span></h1>
+                <p class="text-lg text-gray-600">You're winning 2 out of 3 bids. Keep it up!</p>
+            </div>
+            <button class="hidden md:block px-6 py-3 bg-gradient-to-r from-purple-500 to-indigo-600 text-white rounded-full font-semibold hover:shadow-lg transition-all hover:scale-105">
+                    + Start Bidding
+                </button>
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="bg-white rounded-2xl p-5 border border-gray-100 hover:border-purple-200 transition-all">
+                <div class="flex items-center gap-3 mb-2">
+                    <div class="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center">
+                        <span class="text-2xl trophy-bounce">🏆</span>
+                    </div>
+                    <div>
+                        <p class="text-2xl font-bold text-gray-900">8</p>
+                        <p class="text-xs text-gray-500">Items Won</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white rounded-2xl p-5 border border-gray-100 hover:border-purple-200 transition-all">
+                <div class="flex items-center gap-3 mb-2">
+                    <div class="w-10 h-10 bg-purple-100 rounded-xl flex items-center justify-center">
+                        <span class="text-2xl">⚡</span>
+                    </div>
+                    <div>
+                        <p class="text-2xl font-bold text-gray-900">3</p>
+                        <p class="text-xs text-gray-500">Active Bids</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white rounded-2xl p-5 border border-gray-100 hover:border-purple-200 transition-all">
+                <div class="flex items-center gap-3 mb-2">
+                    <div class="w-10 h-10 bg-pink-100 rounded-xl flex items-center justify-center">
+                        <span class="text-2xl">💖</span>
+                    </div>
+                    <div>
+                        <p class="text-2xl font-bold text-gray-900">12</p>
+                        <p class="text-xs text-gray-500">Favorites</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-gradient-to-br from-purple-500 to-indigo-600 rounded-2xl p-5 text-white">
+                <div class="flex items-center gap-3 mb-2">
+                    <div class="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center">
+                        <span class="text-2xl">💰</span>
+                    </div>
+                    <div>
+                        <p class="text-2xl font-bold">$2,450</p>
+                        <p class="text-xs opacity-80">Your Balance</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="mb-8">
+        <div class="flex gap-2 overflow-x-auto pb-2">
+            <button class="tab-active px-6 py-3 rounded-full text-sm font-semibold whitespace-nowrap">My Bids (3)</button>
+            <button class="px-6 py-3 rounded-full text-sm font-semibold bg-white text-gray-700 hover:bg-gray-50 whitespace-nowrap">Won Items (8)</button>
+            <button class="px-6 py-3 rounded-full text-sm font-semibold bg-white text-gray-700 hover:bg-gray-50 whitespace-nowrap">Favorites (12)</button>
+            <button class="px-6 py-3 rounded-full text-sm font-semibold bg-white text-gray-700 hover:bg-gray-50 whitespace-nowrap">History</button>
+        </div>
+    </div>
+
+    <!-- Active Bids -->
+    <div class="mb-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">Your Active Bids</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <!-- Winning Card -->
+            <div class="bg-white rounded-3xl overflow-hidden card-hover winning-glow border-2 border-green-400">
+                <div class="relative image-shine">
+                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&h=400&fit=crop" alt="Product" class="w-full h-56 object-cover">
+                    <div class="absolute top-4 left-4 bg-green-500 text-white px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2">
+                        <span class="live-pulse">🎯</span> You're Winning!
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Vintage Turntable Pro</h3>
+                    <p class="text-sm text-gray-500 mb-4">Electronics • 24 watching</p>
+                    <div class="flex items-center justify-between mb-4">
+                        <div>
+                            <p class="text-xs text-gray-500 mb-1">Your Bid</p>
+                            <p class="text-2xl font-bold text-green-600">$1,320</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-xs text-gray-500 mb-1">Ends in</p>
+                            <p class="text-lg font-bold text-gray-900">2h 15m</p>
+                        </div>
+                    </div>
+                    <button class="w-full bid-button text-white py-3 rounded-xl font-semibold">Increase Bid</button>
+                </div>
+            </div>
+
+            <!-- Outbid Card -->
+            <div class="bg-white rounded-3xl overflow-hidden card-hover border-2 border-red-300">
+                <div class="relative image-shine">
+                    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&h=400&fit=crop" alt="Product" class="w-full h-56 object-cover">
+                    <div class="absolute top-4 left-4 bg-red-500 text-white px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2 countdown-urgent">
+                        <span>⚠️</span> Outbid!
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Premium Headphones</h3>
+                    <p class="text-sm text-gray-500 mb-4">Audio • 18 watching</p>
+                    <div class="flex items-center justify-between mb-4">
+                        <div>
+                            <p class="text-xs text-gray-500 mb-1">Your Bid</p>
+                            <p class="text-2xl font-bold text-gray-400 line-through">$245</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-xs text-gray-500 mb-1">Current</p>
+                            <p class="text-2xl font-bold text-red-600">$270</p>
+                        </div>
+                    </div>
+                    <div class="bg-red-50 border border-red-200 rounded-xl p-3 mb-3">
+                        <p class="text-sm text-red-700 font-medium">Someone outbid you by $25</p>
+                    </div>
+                    <button class="w-full bg-red-500 hover:bg-red-600 text-white py-3 rounded-xl font-semibold">Bid $295 Now</button>
+                </div>
+            </div>
+
+            <!-- Winning Card 2 -->
+            <div class="bg-white rounded-3xl overflow-hidden card-hover winning-glow border-2 border-green-400">
+                <div class="relative image-shine">
+                    <img src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=600&h=400&fit=crop" alt="Product" class="w-full h-56 object-cover">
+                    <div class="absolute top-4 left-4 bg-green-500 text-white px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2">
+                        <span class="live-pulse">🎯</span> You're Winning!
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Designer Watch Collection</h3>
+                    <p class="text-sm text-gray-500 mb-4">Fashion • 31 watching</p>
+                    <div class="flex items-center justify-between mb-4">
+                        <div>
+                            <p class="text-xs text-gray-500 mb-1">Your Bid</p>
+                            <p class="text-2xl font-bold text-green-600">$850</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-xs text-gray-500 mb-1">Ends in</p>
+                            <p class="text-lg font-bold text-gray-900">6h 42m</p>
+                        </div>
+                    </div>
+                    <button class="w-full bid-button text-white py-3 rounded-xl font-semibold">Increase Bid</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hot Auctions -->
+    <div class="mb-12">
+        <div class="flex items-center justify-between mb-6">
+            <h2 class="text-2xl font-bold text-gray-900">🔥 Hot Auctions Ending Soon</h2>
+            <a href="#" class="text-purple-600 font-semibold hover:text-purple-700">See All →</a>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="bg-white rounded-2xl overflow-hidden card-hover">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=400&h=300&fit=crop" alt="Product" class="w-full h-40 object-cover">
+                    <div class="absolute top-3 right-3 bg-red-500 text-white px-3 py-1 rounded-full text-xs font-bold">12m left</div>
+                </div>
+                <div class="p-4">
+                    <h4 class="font-semibold text-gray-900 mb-2 truncate">Sunglasses Pro</h4>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-xs text-gray-500">Current</p>
+                            <p class="text-lg font-bold text-purple-600">$89</p>
+                        </div>
+                        <button class="px-4 py-2 bg-purple-100 text-purple-700 rounded-lg text-sm font-semibold hover:bg-purple-200">Bid</button>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white rounded-2xl overflow-hidden card-hover">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=400&h=300&fit=crop" alt="Product" class="w-full h-40 object-cover">
+                    <div class="absolute top-3 right-3 bg-orange-500 text-white px-3 py-1 rounded-full text-xs font-bold">1h left</div>
+                </div>
+                <div class="p-4">
+                    <h4 class="font-semibold text-gray-900 mb-2 truncate">Smart Watch Ultra</h4>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-xs text-gray-500">Current</p>
+                            <p class="text-lg font-bold text-purple-600">$425</p>
+                        </div>
+                        <button class="px-4 py-2 bg-purple-100 text-purple-700 rounded-lg text-sm font-semibold hover:bg-purple-200">Bid</button>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white rounded-2xl overflow-hidden card-hover">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=400&h=300&fit=crop" alt="Product" class="w-full h-40 object-cover">
+                    <div class="absolute top-3 right-3 bg-green-500 text-white px-3 py-1 rounded-full text-xs font-bold">3h left</div>
+                </div>
+                <div class="p-4">
+                    <h4 class="font-semibold text-gray-900 mb-2 truncate">Sneakers Limited</h4>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-xs text-gray-500">Current</p>
+                            <p class="text-lg font-bold text-purple-600">$189</p>
+                        </div>
+                        <button class="px-4 py-2 bg-purple-100 text-purple-700 rounded-lg text-sm font-semibold hover:bg-purple-200">Bid</button>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white rounded-2xl overflow-hidden card-hover">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?w=400&h=300&fit=crop" alt="Product" class="w-full h-40 object-cover">
+                    <div class="absolute top-3 right-3 bg-blue-500 text-white px-3 py-1 rounded-full text-xs font-bold">5h left</div>
+                </div>
+                <div class="p-4">
+                    <h4 class="font-semibold text-gray-900 mb-2 truncate">Plant Collection</h4>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-xs text-gray-500">Current</p>
+                            <p class="text-lg font-bold text-purple-600">$45</p>
+                        </div>
+                        <button class="px-4 py-2 bg-purple-100 text-purple-700 rounded-lg text-sm font-semibold hover:bg-purple-200">Bid</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 rounded-3xl p-8 md:p-12 text-center text-white">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to win more?</h2>
+        <p class="text-lg mb-6 opacity-90">Thousands of new auctions added daily. Find your next treasure!</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <button class="px-8 py-4 bg-white text-purple-600 rounded-full font-bold text-lg hover:shadow-xl transition-all hover:scale-105">Explore All Auctions</button>
+            <button class="px-8 py-4 bg-white/20 backdrop-blur text-white rounded-full font-bold text-lg border-2 border-white hover:bg-white/30">Watch Tutorial</button>
+        </div>
+    </div>
+</div>

@@ -304,6 +304,12 @@
                     confirmPassword: formData.get('confirmPassword'),
                 };
 
+                document.querySelector('.firstName ').innerHTML = '';
+                document.querySelector('.lastName ').innerHTML = data.lastName;
+                document.querySelector('.email ').innerHTML = data.email;
+                document.querySelector('.password ').innerHTML = data.password;
+                document.querySelector('.confirmPassword ').innerHTML = data.confirmPassword;
+
                 registrationData = data;
 
                 // Clear previous error messages
@@ -342,7 +348,8 @@
             function showOtpSection() {
                 // Update header
                 document.getElementById('mainTitle').textContent = 'Verify your email';
-                document.getElementById('mainSubtitle').innerHTML = `We've sent a verification code to <strong>${userEmail}</strong>`;
+                document.getElementById('mainSubtitle').innerHTML = `
+                    We 've sent a verification code to <strong>${userEmail}</strong>`;
 
                 // Hide signup form and related elements
                 document.getElementById('signupRequest').classList.add('hidden');
@@ -380,7 +387,8 @@
                         if (response.ok && responseData.success) {
                             // Registration completed successfully
                             // Redirect to login or dashboard
-                            window.location.href = '/login?registered=true';
+                            // window.location.href = '/login?registered=true';
+                            window.location.href = '/app';
                         } else {
                             // Show error message
                             document.getElementById('otpError').innerHTML = responseData.message || 'Invalid OTP. Please try again.';

@@ -94,7 +94,8 @@ export const register = async(req, res) => {
             return res.status(422).json({
                 success: false,
                 errorOn: error.issues[0].path[0],
-                message: error.issues[0].message
+                message: error.issues[0].message,
+                error: JSON.parse(error)
             })
         }
         // req.flash('error_msg', 'Server error');
@@ -118,6 +119,11 @@ export const login = async(req, res) => {
         })
 
         if (!user) {
+            req.flash('error_msg', 'Email or password is incorrect');
+            res.redirect('/login');
+        }
+
+        if (user.role === 'ADMIN') {
             req.flash('error_msg', 'Email or password is incorrect');
             res.redirect('/login');
         }
@@ -149,7 +155,7 @@ export const login = async(req, res) => {
         }
 
         req.flash('success_msg', 'Successfully logged in');
-        res.redirect('/');
+        res.redirect('/app');
     } catch (error) {
         if (error.name === "ZodError") {
             req.flash('error_msg', error.issues[0].message);
@@ -226,7 +232,8 @@ export const registerRequest = async(req, res) => {
             return res.status(422).json({
                 success: false,
                 errorOn: error.issues[0].path[0],
-                message: error.issues[0].message
+                message: error.issues[0].message,
+                error: JSON.parse(error)
             })
         }
         return res.status(500).json({
@@ -241,7 +248,6 @@ function sendOtpToEmailOrPhone({ otp, isEmailOrPhone, validated }) {
 
     if (isEmailOrPhone === 'email') {
         // send email
-        // console.log(`Yout OTP is ${otp}`)
         sendEmail({
             to: validated.email,
             subject: 'OTP for email verification',

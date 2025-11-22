@@ -2,13 +2,11 @@ import express from 'express';
 const router = express.Router();
 
 import { homePage } from '../controllers/home.controller.js';
-import { buyerApp } from '../controllers/user/app.controller.js';
+import { sellerApp, sellerApp2 } from '../controllers/user/app.controller.js';
 import { isAuthenticated, isCustomer } from '../middlewares/auth.middleware.js';
 
+router.get('/app', sellerApp)
 
-router.get('/', homePage)
-
-router.get('/app', isAuthenticated, isCustomer, buyerApp)
-
+router.get('/app2', sellerApp2)
 
 export default router;

@@ -2,11 +2,15 @@ import express from 'express';
 import { fileURLToPath } from 'url'
 import path from 'path';
 import webRoutes from './routes/web.js';
+import adminRoutes from './routes/admin.js';
+import authRoutes from './routes/auth.js';
+import sellerRoutes from './routes/seller.js';
 import expressLayouts from 'express-ejs-layouts';
 
 import session from 'express-session';
 import flash from 'connect-flash';
 
+import { isGuest } from './middlewares/auth.middleware.js';
 
 const __filename = fileURLToPath(
     import.meta.url);
@@ -32,8 +36,11 @@ app.use(flash());
 app.use((req, res, next) => {
     res.locals.success_msg = req.flash('success_msg');
     res.locals.error_msg = req.flash('error_msg');
+    res.locals.user = req.session.user || null;
     next();
 });
+
+
 
 // Set view engine
 app.set('view engine', 'ejs');
@@ -46,5 +53,8 @@ app.use(expressLayouts);
 app.set('layout', 'layouts/main');
 
 app.use('/', webRoutes);
+app.use('/admin', adminRoutes);
+app.use('/', isGuest, authRoutes);
+app.use('/seller', sellerRoutes);
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

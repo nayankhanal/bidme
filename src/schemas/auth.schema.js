@@ -69,10 +69,42 @@ export const registerSchema = z.object({
 // Create a function to get the schema based on the path
 export const getRegisterSchema = (path) => {
     if (path === '/signup') {
-        return registerSchema.refine((data) => !!data.otp, {
-            message: "OTP is required",
-            path: ["otp"],
-        });
+        return registerSchema.superRefine(async(data, ctx) => {
+            // Must have OTP
+            if (!data.otp) {
+                ctx.addIssue({
+                    code: z.ZodIssueCode.custom,
+                    message: "OTP is required",
+                    path: ["otp"],
+                });
+                return;
+            }
+
+            const record = await prisma.emailOrPhoneVerification.findFirst({
+                where: {
+                    emailOrPhone: data.email || data.phone,
+                    otp: data.otp,
+                },
+            });
+
+            if (!record) {
+                ctx.addIssue({
+                    code: z.ZodIssueCode.custom,
+                    message: "Invalid OTP",
+                    path: ["otp"],
+                });
+                return;
+            }
+
+            if (record.expiresAt < new Date()) {
+                ctx.addIssue({
+                    code: z.ZodIssueCode.custom,
+                    message: "OTP expired",
+                    path: ["otp"],
+                });
+            }
+        }, { async: true });
+
     }
     return registerSchema;
 };
