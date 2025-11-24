@@ -118,12 +118,7 @@ export const login = async(req, res) => {
             }
         })
 
-        if (!user) {
-            req.flash('error_msg', 'Email or password is incorrect');
-            res.redirect('/login');
-        }
-
-        if (user.role === 'ADMIN') {
+        if (!user || user.role === 'ADMIN') {
             req.flash('error_msg', 'Email or password is incorrect');
             res.redirect('/login');
         }

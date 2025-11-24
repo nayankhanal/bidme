@@ -10,7 +10,7 @@ import expressLayouts from 'express-ejs-layouts';
 import session from 'express-session';
 import flash from 'connect-flash';
 
-import { isGuest } from './middlewares/auth.middleware.js';
+import { isGuest, isAuthenticated, isCustomer } from './middlewares/auth.middleware.js';
 
 const __filename = fileURLToPath(
     import.meta.url);
@@ -37,6 +37,7 @@ app.use((req, res, next) => {
     res.locals.success_msg = req.flash('success_msg');
     res.locals.error_msg = req.flash('error_msg');
     res.locals.user = req.session.user || null;
+    res.locals.path = req.path;
     next();
 });
 
@@ -53,8 +54,15 @@ app.use(expressLayouts);
 app.set('layout', 'layouts/main');
 
 app.use('/', webRoutes);
-app.use('/admin', adminRoutes);
+app.use('/admin', isAuthenticated, adminRoutes);
+app.use('/seller', isAuthenticated, isCustomer, sellerRoutes);
 app.use('/', isGuest, authRoutes);
-app.use('/seller', sellerRoutes);
+
+
+app.use((req, res) => {
+    res.status(404).render('errors/404', {
+        title: 'Page Not Found'
+    });
+});
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

@@ -10,6 +10,7 @@
         color: #1f2937;
         animation: slideIn 0.3s ease-out;
         transition: all 0.3s ease-out;
+        z-index: 9999;
     }
     
     .toast-success {
@@ -36,6 +37,10 @@
             transform: translateX(0);
             opacity: 1;
         }
+    }
+    
+    #toast-container {
+        z-index: 9999;
     }
 </style>
 

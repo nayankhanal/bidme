@@ -12,9 +12,9 @@ export const sellerApp = (req, res) => {
     });
 }
 
-export const sellerApp2 = (req, res) => {
-    res.render('user/seller/app/index2', {
+export const activeAuctions = (req, res) => {
+    res.render('user/seller/auctions/index', {
         title: 'App',
-        layout: false
+        layout: 'user/seller/layouts/index'
     });
 }

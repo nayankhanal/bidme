@@ -8,7 +8,7 @@ export const isAuthenticated = (req, res, next) => {
         //     message: "Unauthorized"
         // })
 
-        req.flash('error_msg', 'Unauthorized');
+        // req.flash('error_msg', 'Unauthorized');
         return res.redirect('/login');
     }
 }
@@ -23,7 +23,7 @@ export const isAdmin = (req, res, next) => {
         //     message: "Unauthorized"
         // })
 
-        req.flash('error_msg', 'Unauthorized');
+        // req.flash('error_msg', 'Unauthorized');
         return res.redirect('/login');
     }
 }
@@ -38,7 +38,7 @@ export const isCustomer = (req, res, next) => {
         //     message: "Unauthorized"
         // })
 
-        req.flash('error_msg', 'Unauthorized');
+        // req.flash('error_msg', 'Unauthorized');
         return res.redirect('/login');
     }
 }
@@ -53,7 +53,7 @@ export const isManager = (req, res, next) => {
         //     message: "Unauthorized"
         // })
 
-        req.flash('error_msg', 'Unauthorized');
+        // req.flash('error_msg', 'Unauthorized');
         return res.redirect('/login');
     }
 }

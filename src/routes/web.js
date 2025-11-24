@@ -10,5 +10,4 @@ router.get('/', homePage)
 
 router.get('/app', isAuthenticated, isCustomer, buyerApp)
 
-
 export default router;

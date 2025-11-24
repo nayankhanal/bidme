@@ -33,6 +33,7 @@ export const adminLogin = async(req, res) => {
             //     message: "Invalid credentials"
             // })
 
+
             req.flash('error_msg', 'Invalid credentials');
             return res.redirect('/admin/login');
         }

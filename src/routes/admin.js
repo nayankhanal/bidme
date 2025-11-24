@@ -10,6 +10,6 @@ router.get('/login', isGuest, adminLoginPage)
 router.post('/login', isGuest, adminLogin)
 router.post('/logout', adminLogout)
 
-router.get('/dashboard', isAuthenticated, isAdmin, dashboardPage)
+router.get('/dashboard', isAdmin, dashboardPage)
 
 export default router
