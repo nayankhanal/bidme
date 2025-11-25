@@ -1,0 +1,367 @@
+<main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-50 pb-20 lg:pb-0">
+    <div class="max-w-5xl mx-auto px-6 py-8">
+        <!-- Page Header -->
+        <div class="mb-8">
+            <div class="flex items-center gap-3 mb-4">
+                <a href="/auctions/active" class="p-2 hover:bg-white rounded-lg transition-colors">
+                    <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                    </svg>
+                </a>
+                <div>
+                    <h1 class="text-3xl font-bold text-gray-800">Create New Auction</h1>
+                    <p class="text-gray-600 mt-1">List your item and start receiving bids</p>
+                </div>
+            </div>
+
+            <!-- Progress Steps -->
+            <div class="bg-white rounded-xl p-6 border border-gray-200">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-3 flex-1">
+                        <div class="w-10 h-10 bg-purple-600 text-white rounded-full flex items-center justify-center font-bold">1</div>
+                        <div>
+                            <p class="text-sm font-semibold text-gray-800">Basic Info</p>
+                            <p class="text-xs text-gray-500">Title & Description</p>
+                        </div>
+                    </div>
+                    <div class="w-12 h-0.5 bg-gray-300"></div>
+                    <div class="flex items-center gap-3 flex-1">
+                        <div class="w-10 h-10 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center font-bold">2</div>
+                        <div>
+                            <p class="text-sm font-semibold text-gray-400">Images</p>
+                            <p class="text-xs text-gray-400">Upload Photos</p>
+                        </div>
+                    </div>
+                    <div class="w-12 h-0.5 bg-gray-300"></div>
+                    <div class="flex items-center gap-3 flex-1">
+                        <div class="w-10 h-10 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center font-bold">3</div>
+                        <div>
+                            <p class="text-sm font-semibold text-gray-400">Pricing</p>
+                            <p class="text-xs text-gray-400">Set Prices</p>
+                        </div>
+                    </div>
+                    <div class="w-12 h-0.5 bg-gray-300"></div>
+                    <div class="flex items-center gap-3 flex-1">
+                        <div class="w-10 h-10 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center font-bold">4</div>
+                        <div>
+                            <p class="text-sm font-semibold text-gray-400">Schedule</p>
+                            <p class="text-xs text-gray-400">Set Duration</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <form action="/auctions/create" method="POST" enctype="multipart/form-data">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Main Form -->
+                <div class="lg:col-span-2 space-y-6">
+                    <!-- Basic Information -->
+                    <div class="bg-white rounded-xl p-6 border border-gray-200">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+                                <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                            </div>
+                            <h2 class="text-xl font-bold text-gray-800">Basic Information</h2>
+                        </div>
+
+                        <!-- Title -->
+                        <div class="mb-5">
+                            <label for="title" class="block text-sm font-semibold text-gray-700 mb-2">
+                                Auction Title <span class="text-red-500">*</span>
+                            </label>
+                            <input type="text" id="title" name="title" required placeholder="e.g., Premium Wireless Headphones - Like New" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                            <p class="text-xs text-gray-500 mt-2">Create a clear, descriptive title (max 100 characters)</p>
+                        </div>
+
+                        <!-- Description -->
+                        <div class="mb-5">
+                            <label for="description" class="block text-sm font-semibold text-gray-700 mb-2">
+                                Description
+                            </label>
+                            <textarea id="description" name="description" rows="6" placeholder="Describe your item in detail. Include condition, features, specifications, and any flaws..." class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none"></textarea>
+                            <p class="text-xs text-gray-500 mt-2">Provide detailed information to attract more bidders</p>
+                        </div>
+
+                        <!-- Category -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label for="category" class="block text-sm font-semibold text-gray-700 mb-2">
+                                    Category <span class="text-red-500">*</span>
+                                </label>
+                                <select id="category" name="category" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                                    <option value="">Select a category</option>
+                                    <option value="electronics">Electronics</option>
+                                    <option value="fashion">Fashion</option>
+                                    <option value="collectibles">Collectibles</option>
+                                    <option value="home-garden">Home & Garden</option>
+                                    <option value="sports">Sports & Outdoors</option>
+                                    <option value="art">Art & Antiques</option>
+                                    <option value="books">Books & Media</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for="condition" class="block text-sm font-semibold text-gray-700 mb-2">
+                                    Condition <span class="text-red-500">*</span>
+                                </label>
+                                <select id="condition" name="condition" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                                    <option value="">Select condition</option>
+                                    <option value="new">New</option>
+                                    <option value="like-new">Like New</option>
+                                    <option value="excellent">Excellent</option>
+                                    <option value="good">Good</option>
+                                    <option value="fair">Fair</option>
+                                    <option value="poor">Poor</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Images Upload -->
+                    <div class="bg-white rounded-xl p-6 border border-gray-200">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-10 h-10 bg-pink-100 rounded-lg flex items-center justify-center">
+                                <svg class="w-5 h-5 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                                </svg>
+                            </div>
+                            <h2 class="text-xl font-bold text-gray-800">Images</h2>
+                        </div>
+
+                        <!-- Image Upload Area -->
+                        <div class="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-purple-400 transition-colors cursor-pointer">
+                            <input type="file" id="images" name="images" multiple accept="image/*" class="hidden">
+                            <label for="images" class="cursor-pointer">
+                                <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                                    </svg>
+                                </div>
+                                <p class="text-sm font-semibold text-gray-700 mb-1">Click to upload images</p>
+                                <p class="text-xs text-gray-500">or drag and drop</p>
+                                <p class="text-xs text-gray-400 mt-2">PNG, JPG, GIF up to 10MB (Max 8 images)</p>
+                            </label>
+                        </div>
+
+                        <!-- Image Preview Grid -->
+                        <div id="imagePreview" class="grid grid-cols-4 gap-4 mt-4 hidden">
+                            <!-- Preview images will be inserted here via JavaScript -->
+                        </div>
+
+                        <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-4">
+                            <div class="flex gap-3">
+                                <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                                <div>
+                                    <p class="text-sm font-semibold text-blue-900">Image Tips</p>
+                                    <ul class="text-xs text-blue-800 mt-2 space-y-1">
+                                        <li>• Use high-quality, well-lit photos</li>
+                                        <li>• Show item from multiple angles</li>
+                                        <li>• Include close-ups of important details or flaws</li>
+                                        <li>• First image will be the main listing photo</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pricing -->
+                    <div class="bg-white rounded-xl p-6 border border-gray-200">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+                                <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                            </div>
+                            <h2 class="text-xl font-bold text-gray-800">Pricing</h2>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                            <!-- Starting Price -->
+                            <div>
+                                <label for="startingPrice" class="block text-sm font-semibold text-gray-700 mb-2">
+                                    Starting Price <span class="text-red-500">*</span>
+                                </label>
+                                <div class="relative">
+                                    <span class="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 font-semibold">$</span>
+                                    <input type="number" id="startingPrice" name="startingPrice" required step="0.01" min="0.01" placeholder="0.00" class="w-full pl-8 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                                </div>
+                                <p class="text-xs text-gray-500 mt-2">Minimum bid to start the auction</p>
+                            </div>
+
+                            <!-- Reserve Price -->
+                            <div>
+                                <label for="reservePrice" class="block text-sm font-semibold text-gray-700 mb-2">
+                                    Reserve Price (Optional)
+                                </label>
+                                <div class="relative">
+                                    <span class="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 font-semibold">$</span>
+                                    <input type="number" id="reservePrice" name="reservePrice" step="0.01" min="0.01" placeholder="0.00" class="w-full pl-8 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                                </div>
+                                <p class="text-xs text-gray-500 mt-2">Minimum price you'll accept (hidden from bidders)</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-amber-50 border border-amber-200 rounded-lg p-4 mt-5">
+                            <div class="flex gap-3">
+                                <svg class="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                                </svg>
+                                <div>
+                                    <p class="text-sm font-semibold text-amber-900">Reserve Price Info</p>
+                                    <p class="text-xs text-amber-800 mt-1">If the highest bid doesn't meet your reserve price, you're not obligated to sell. However, setting a reserve may discourage some bidders.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Schedule -->
+                    <div class="bg-white rounded-xl p-6 border border-gray-200">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                                <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                            </div>
+                            <h2 class="text-xl font-bold text-gray-800">Auction Schedule</h2>
+                        </div>
+
+                        <div class="space-y-5">
+                            <!-- Start Time -->
+                            <div>
+                                <label for="auctionStart" class="block text-sm font-semibold text-gray-700 mb-2">
+                                    Start Date & Time <span class="text-red-500">*</span>
+                                </label>
+                                <input type="datetime-local" id="auctionStart" name="auctionStart" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                                <p class="text-xs text-gray-500 mt-2">When bidding will begin</p>
+                            </div>
+
+                            <!-- End Time -->
+                            <div>
+                                <label for="auctionEnd" class="block text-sm font-semibold text-gray-700 mb-2">
+                                    End Date & Time <span class="text-red-500">*</span>
+                                </label>
+                                <input type="datetime-local" id="auctionEnd" name="auctionEnd" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                                <p class="text-xs text-gray-500 mt-2">When bidding will close</p>
+                            </div>
+
+                            <!-- Quick Duration Buttons -->
+                            <div>
+                                <p class="text-sm font-semibold text-gray-700 mb-3">Quick Duration</p>
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                                    <button type="button" class="px-4 py-2 border-2 border-gray-300 rounded-lg text-sm font-semibold hover:border-purple-500 hover:bg-purple-50 transition-colors">
+                                        3 Days
+                                    </button>
+                                    <button type="button" class="px-4 py-2 border-2 border-gray-300 rounded-lg text-sm font-semibold hover:border-purple-500 hover:bg-purple-50 transition-colors">
+                                        5 Days
+                                    </button>
+                                    <button type="button" class="px-4 py-2 border-2 border-gray-300 rounded-lg text-sm font-semibold hover:border-purple-500 hover:bg-purple-50 transition-colors">
+                                        7 Days
+                                    </button>
+                                    <button type="button" class="px-4 py-2 border-2 border-gray-300 rounded-lg text-sm font-semibold hover:border-purple-500 hover:bg-purple-50 transition-colors">
+                                        10 Days
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <button type="submit" name="status" value="DRAFT" class="flex-1 px-6 py-3 bg-white border-2 border-purple-600 text-purple-600 rounded-xl font-semibold hover:bg-purple-50 transition-colors">
+                            Save as Draft
+                        </button>
+                        <button type="submit" name="status" value="ACTIVE" class="flex-1 px-6 py-3 bg-gradient-to-r from-purple-500 to-indigo-600 text-white rounded-xl font-semibold hover:shadow-lg transition-shadow flex items-center justify-center gap-2">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            Publish Auction
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Sidebar - Preview & Tips -->
+                <div class="lg:col-span-1 space-y-6">
+                    <!-- Preview Card -->
+                    <div class="bg-white rounded-xl p-6 border border-gray-200 sticky top-6">
+                        <h3 class="text-lg font-bold text-gray-800 mb-4">Preview</h3>
+
+                        <div class="bg-gray-100 rounded-lg aspect-square mb-4 flex items-center justify-center">
+                            <svg class="w-16 h-16 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                            </svg>
+                        </div>
+
+                        <h4 class="font-semibold text-gray-800 mb-2">Your Auction Title</h4>
+                        <p class="text-sm text-gray-600 mb-4">Description will appear here...</p>
+
+                        <div class="flex items-center justify-between py-3 border-t border-gray-200">
+                            <span class="text-sm text-gray-600">Starting Price</span>
+                            <span class="text-lg font-bold text-purple-600">$0.00</span>
+                        </div>
+
+                        <div class="flex items-center justify-between py-3 border-t border-gray-200">
+                            <span class="text-sm text-gray-600">Duration</span>
+                            <span class="text-sm font-semibold text-gray-700">Not set</span>
+                        </div>
+                    </div>
+
+                    <!-- Tips Card -->
+                    <div class="bg-gradient-to-br from-purple-500 to-indigo-600 rounded-xl p-6 text-white">
+                        <div class="flex items-center gap-2 mb-4">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                            </svg>
+                            <h3 class="text-lg font-bold">Pro Tips</h3>
+                        </div>
+                        <ul class="space-y-3 text-sm">
+                            <li class="flex gap-2">
+                                <span class="text-purple-200">•</span>
+                                <span>Detailed descriptions get 3x more bids</span>
+                            </li>
+                            <li class="flex gap-2">
+                                <span class="text-purple-200">•</span>
+                                <span>Items with 5+ images sell for 20% more</span>
+                            </li>
+                            <li class="flex gap-2">
+                                <span class="text-purple-200">•</span>
+                                <span>7-day auctions have the highest success rate</span>
+                            </li>
+                            <li class="flex gap-2">
+                                <span class="text-purple-200">•</span>
+                                <span>Auctions ending on Sunday get more bids</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Help Card -->
+                    <div class="bg-white rounded-xl p-6 border border-gray-200">
+                        <h3 class="text-lg font-bold text-gray-800 mb-4">Need Help?</h3>
+                        <div class="space-y-3">
+                            <a href="#" class="flex items-center gap-3 text-sm text-gray-700 hover:text-purple-600 transition-colors">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                                </svg> Seller's Guide
+                            </a>
+                            <a href="#" class="flex items-center gap-3 text-sm text-gray-700 hover:text-purple-600 transition-colors">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg> FAQ
+                            </a>
+                            <a href="#" class="flex items-center gap-3 text-sm text-gray-700 hover:text-purple-600 transition-colors">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/>
+                                </svg> Contact Support
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</main>

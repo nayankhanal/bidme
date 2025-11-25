@@ -19,20 +19,19 @@
         <!-- Navigation -->
         <nav class="flex-1 overflow-y-auto py-6 px-4">
             <div class="space-y-2">
-                <a href="/seller/app" class="sidebar-link flex items-center gap-3 text-gray-700">
+                <a href="/seller/dashboard" class="sidebar-link flex items-center gap-3 text-gray-700">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
                     </svg>
                     <span class="font-medium">Dashboard</span>
                 </a>
 
-                <a href="/seller/active-auctions" class="sidebar-link flex items-center gap-3 text-gray-700">
+                <a href="/seller/auctions?status=active" class="sidebar-link flex items-center gap-3 text-gray-700">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
                     </svg>
                     <span class="font-medium">Active Auctions</span>
                     <span class="active-auctions-count ml-auto bg-gradient-to-r from-purple-500 to-indigo-600 text-white text-xs px-2.5 py-1 rounded-full">8</span>
-                    <!-- <span class="active-auctions-count <%= path.startsWith('/seller/active-auctions') ? 'bg-gradient-to-r from-purple-500 to-indigo-600 text-white' : '' %>"> -->
                 </a>
 
                 <a href="#" class="sidebar-link flex items-center gap-3 text-gray-700">
@@ -42,7 +41,7 @@
                     <span class="font-medium">Inventory</span>
                 </a>
 
-                <a href="#" class="sidebar-link flex items-center gap-3 text-gray-700">
+                <a href="/seller/auctions/create" class="sidebar-link flex items-center gap-3 text-gray-700">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
                             </svg>
@@ -136,10 +135,14 @@
         const activeSidebars = document.querySelectorAll('.sidebar-link');
 
         activeSidebars.forEach(link => {
-            if (link.getAttribute('href') === window.location.pathname) {
+            console.log(window.location.pathname);
+            console.log(link.getAttribute('href'));
+
+
+            if (link.getAttribute('href').split('?')[0] === window.location.pathname) {
                 link.classList.add('active');
             }
-            if (window.location.pathname.startsWith('/seller/active-auctions')) {
+            if (window.location.pathname === '/seller/auctions') {
                 document.querySelector('.active-auctions-count').classList.add('bg-gradient-to-r', 'from-white', 'to-white', 'text-indigo-600', 'font-bold');
             }
         })
